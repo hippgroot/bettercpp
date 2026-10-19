@@ -2,8 +2,10 @@
 
 #include <array>
 #include <chrono>
+#include <condition_variable>
 #include <cstddef>
 #include <cstdint>
+#include <deque>
 #include <filesystem>
 #include <functional>
 #include <map>
@@ -74,6 +76,8 @@ using std::weak_ptr;
 
 using thread = std::jthread;
 using std::stop_token;
+using condvar     = std::condition_variable;
+using condvar_any = std::condition_variable_any;
 
 using std::mutex;
 using std::scoped_lock;
@@ -87,6 +91,9 @@ using span = std::span<T, Extent>;
 
 template <typename T, typename Alloc = std::allocator<T>>
 using list = std::vector<T, Alloc>;
+
+template <typename T, typename Alloc = std::allocator<T>>
+using queue = std::deque<T, Alloc>;
 
 template <
   typename Key, typename Value, typename Hash = std::hash<Key>, typename Equal = std::equal_to<Key>,
@@ -114,6 +121,7 @@ using tuple = std::tuple<Types...>;
 
 template <typename T>
 using opt = std::optional<T>;
+using std::nullopt;
 
 template <typename Signature>
 using fn = std::function<Signature>;

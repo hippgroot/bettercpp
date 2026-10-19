@@ -49,7 +49,7 @@ RequiresClausePosition: OwnLine
 # Single-line constructs
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortBlocksOnASingleLine: Empty
-AllowShortIfStatementsOnASingleLine: Never
+AllowShortIfStatementsOnASingleLine: WithoutElse
 AllowShortCaseLabelsOnASingleLine: true
 
 # Includes: project "..." first, then external <lib/...>, then std <header>
