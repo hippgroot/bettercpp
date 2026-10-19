@@ -1,0 +1,75 @@
+# --- Build output -----------------------------------------------------------
+build/
+out/
+cmake-build-*/
+
+# --- CMake ------------------------------------------------------------------
+# CMakePresets.json is shared; CMakeUserPresets.json is per-developer.
+CMakeUserPresets.json
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+Testing/
+_deps/
+
+# --- Tooling caches ---------------------------------------------------------
+# clangd, neocmakelsp, etc.
+.cache/
+# Often symlinked/copied to the root for clangd
+compile_commands.json
+.clangd
+
+# --- Compiled artifacts -----------------------------------------------------
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.gch
+*.pch
+*.dSYM/
+
+# --- Editors / IDEs ---------------------------------------------------------
+.vscode/
+.idea/
+.vs/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.nvim.lua
+.exrc
+Session.vim
+
+# --- OS files ---------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+.nfs*

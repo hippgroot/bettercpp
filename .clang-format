@@ -1,0 +1,70 @@
+BasedOnStyle: LLVM
+
+# Indentation
+IndentWidth: 2
+ContinuationIndentWidth: 2
+AccessModifierOffset: -2
+NamespaceIndentation: None
+IndentCaseLabels: true
+IndentRequiresClause: true
+
+# Line length
+ColumnLimit: 100
+
+# Pointers and references bind to the type: `const T&`, `T* p`
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Braces
+BreakBeforeBraces: Custom
+BraceWrapping:
+  BeforeElse: true
+FixNamespaceComments: false
+Cpp11BracedListStyle: Block
+
+# Constructor initializers start on the next line at column 0
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 0
+PackConstructorInitializers: NextLineOnly
+
+# Wrapped calls and braced lists: `foo(` / args / `);`
+BreakAfterOpenBracketFunction: true
+BreakBeforeCloseBracketFunction: true
+BreakAfterOpenBracketBracedList: true
+BreakBeforeCloseBracketBracedList: true
+
+# Alignment (a blank line ends an alignment group)
+AlignConsecutiveAssignments:
+  Enabled: true
+  AlignCompound: true
+AlignConsecutiveDeclarations:
+  Enabled: true
+AlignConsecutiveShortCaseStatements:
+  Enabled: true
+
+# Templates and concepts
+BreakTemplateDeclarations: Leave
+RequiresClausePosition: OwnLine
+
+# Single-line constructs
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: true
+
+# Includes: project "..." first, then external <lib/...>, then std <header>
+SortIncludes:
+  Enabled: true
+  IgnoreCase: true
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^"'
+    Priority: 1
+  - Regex: '^<[[:alnum:]_]+>$'
+    Priority: 3
+  - Regex: '^<'
+    Priority: 2
+IncludeIsMainRegex: '^$'
+SortUsingDeclarations: Never
+
+InsertNewlineAtEOF: true

@@ -1,0 +1,188 @@
+{
+  "version": 8,
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_COLOR_DIAGNOSTICS": "ON",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "base-debug",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "base-relwdeb",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O3 -g -DNDEBUG -fno-omit-frame-pointer"
+      }
+    },
+    {
+      "name": "base-release",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "win-debug",
+      "displayName": "Windows Debug",
+      "description": "Windows debug build",
+      "inherits": "base-debug",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
+      "cacheVariables": {
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDLL"
+      }
+    },
+    {
+      "name": "win-relwdeb",
+      "displayName": "Windows Release with Debug Info",
+      "description": "Windows release build with debug symbols",
+      "inherits": "base-relwdeb",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
+      "cacheVariables": {
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDLL"
+      }
+    },
+    {
+      "name": "win-release",
+      "displayName": "Windows Release",
+      "description": "Windows release build",
+      "inherits": "base-release",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
+      "cacheVariables": {
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDLL"
+      }
+    },
+    {
+      "name": "mac-debug",
+      "displayName": "MacOS Debug",
+      "description": "MacOS debug build",
+      "inherits": "base-debug",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" }
+    },
+    {
+      "name": "mac-relwdeb",
+      "displayName": "MacOS Release with Debug Info",
+      "description": "MacOS release build with debug symbols",
+      "inherits": "base-relwdeb",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" }
+    },
+    {
+      "name": "mac-release",
+      "displayName": "MacOS Release",
+      "description": "MacOS release build",
+      "inherits": "base-release",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" }
+    },
+    {
+      "name": "lin-debug",
+      "displayName": "Linux Debug",
+      "description": "Linux debug build",
+      "inherits": "base-debug",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
+    },
+    {
+      "name": "lin-relwdeb",
+      "displayName": "Linux Release with Debug Info",
+      "description": "Linux release build with debug symbols",
+      "inherits": "base-relwdeb",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
+    },
+    {
+      "name": "lin-release",
+      "displayName": "Linux Release",
+      "description": "Linux release build",
+      "inherits": "base-release",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
+    }
+  ],
+  "buildPresets": [
+    { "name": "win-debug", "configurePreset": "win-debug" },
+    { "name": "win-relwdeb", "configurePreset": "win-relwdeb" },
+    { "name": "win-release", "configurePreset": "win-release" },
+    { "name": "mac-debug", "configurePreset": "mac-debug" },
+    { "name": "mac-relwdeb", "configurePreset": "mac-relwdeb" },
+    { "name": "mac-release", "configurePreset": "mac-release" },
+    { "name": "lin-debug", "configurePreset": "lin-debug" },
+    { "name": "lin-relwdeb", "configurePreset": "lin-relwdeb" },
+    { "name": "lin-release", "configurePreset": "lin-release" }
+  ],
+  "workflowPresets": [
+    {
+      "name": "win-debug",
+      "steps": [
+        { "type": "configure", "name": "win-debug" },
+        { "type": "build", "name": "win-debug" }
+      ]
+    },
+    {
+      "name": "win-relwdeb",
+      "steps": [
+        { "type": "configure", "name": "win-relwdeb" },
+        { "type": "build", "name": "win-relwdeb" }
+      ]
+    },
+    {
+      "name": "win-release",
+      "steps": [
+        { "type": "configure", "name": "win-release" },
+        { "type": "build", "name": "win-release" }
+      ]
+    },
+    {
+      "name": "mac-debug",
+      "steps": [
+        { "type": "configure", "name": "mac-debug" },
+        { "type": "build", "name": "mac-debug" }
+      ]
+    },
+    {
+      "name": "mac-relwdeb",
+      "steps": [
+        { "type": "configure", "name": "mac-relwdeb" },
+        { "type": "build", "name": "mac-relwdeb" }
+      ]
+    },
+    {
+      "name": "mac-release",
+      "steps": [
+        { "type": "configure", "name": "mac-release" },
+        { "type": "build", "name": "mac-release" }
+      ]
+    },
+    {
+      "name": "lin-debug",
+      "steps": [
+        { "type": "configure", "name": "lin-debug" },
+        { "type": "build", "name": "lin-debug" }
+      ]
+    },
+    {
+      "name": "lin-relwdeb",
+      "steps": [
+        { "type": "configure", "name": "lin-relwdeb" },
+        { "type": "build", "name": "lin-relwdeb" }
+      ]
+    },
+    {
+      "name": "lin-release",
+      "steps": [
+        { "type": "configure", "name": "lin-release" },
+        { "type": "build", "name": "lin-release" }
+      ]
+    }
+  ]
+}
